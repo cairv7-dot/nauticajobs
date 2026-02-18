@@ -1,0 +1,62 @@
+{
+  "_from": "@grammyjs/types@3.24.0",
+  "_id": "@grammyjs/types@3.24.0",
+  "_inBundle": false,
+  "_integrity": "sha512-qQIEs4lN5WqUdr4aT8MeU6UFpMbGYAvcvYSW1A4OO1PABGJQHz/KLON6qvpf+5RxaNDQBxiY2k2otIhg/AG7RQ==",
+  "_location": "/@grammyjs/types",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "@grammyjs/types@3.24.0",
+    "name": "@grammyjs/types",
+    "escapedName": "@grammyjs%2ftypes",
+    "scope": "@grammyjs",
+    "rawSpec": "3.24.0",
+    "saveSpec": null,
+    "fetchSpec": "3.24.0"
+  },
+  "_requiredBy": [
+    "/grammy"
+  ],
+  "_resolved": "https://registry.npmjs.org/@grammyjs/types/-/types-3.24.0.tgz",
+  "_shasum": "03aacbb83b62819b6367e59604b7090a98b47ede",
+  "_spec": "@grammyjs/types@3.24.0",
+  "_where": "c:\\Users\\cai\\dig\\node_modules\\grammy",
+  "author": {
+    "name": "KnorpelSenf"
+  },
+  "bugs": {
+    "url": "https://github.com/grammyjs/types/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Telegram Bot API type declarations for grammY",
+  "devDependencies": {
+    "deno-bin": "^1.31.1"
+  },
+  "files": [
+    "*.d.ts",
+    "mod.js"
+  ],
+  "homepage": "https://grammy.dev/",
+  "keywords": [
+    "grammy",
+    "telegram",
+    "bot",
+    "api",
+    "types"
+  ],
+  "license": "MIT",
+  "main": "mod.js",
+  "name": "@grammyjs/types",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/grammyjs/types.git"
+  },
+  "scripts": {
+    "prepare": "deno task build"
+  },
+  "types": "mod.d.ts",
+  "version": "3.24.0"
+}
