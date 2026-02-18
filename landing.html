@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digitalización Náutica | Agencia Premium</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            --color-oxford: #001233;
+            --color-gold: #C2A364;
+            --color-light-border: #E5E7EB;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--color-oxford);
+            background-color: #FFFFFF;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            letter-spacing: -0.02em;
+        }
+        
+        .heading-xl {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            font-weight: 600;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+        
+        .heading-lg {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.25rem;
+            font-weight: 600;
+            letter-spacing: -0.015em;
+        }
+        
+        .heading-md {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+        }
+        
+        .body-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            line-height: 1.6;
+            max-width: 60ch;
+        }
+        
+        .body-text-lg {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.125rem;
+            line-height: 1.7;
+        }
+        
+        .btn-primary {
+            font-family: 'Inter', sans-serif;
+            border: 1px solid var(--color-oxford);
+            border-radius: 3px;
+            padding: 0.875rem 2.5rem;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            background-color: var(--color-oxford);
+            color: #FFFFFF;
+        }
+        
+        .btn-primary:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+        
+        .btn-secondary {
+            font-family: 'Inter', sans-serif;
+            border: 1px solid var(--color-oxford);
+            border-radius: 3px;
+            padding: 0.875rem 2.5rem;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            background-color: transparent;
+            color: var(--color-oxford);
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--color-oxford);
+            color: #FFFFFF;
+        }
+        
+        .border-subtle {
+            border: 1px solid var(--color-light-border);
+        }
+        
+        .border-accent {
+            border-bottom: 1px solid var(--color-gold);
+        }
+        
+        .divider {
+            height: 1px;
+            background-color: var(--color-light-border);
+        }
+        
+        .service-card {
+            padding: 3rem;
+            border: 1px solid var(--color-light-border);
+            transition: border-color 0.3s ease;
+        }
+        
+        .service-card:hover {
+            border-color: var(--color-gold);
+        }
+        
+        .accent-line {
+            height: 2px;
+            width: 3rem;
+            background-color: var(--color-gold);
+            margin-bottom: 1.5rem;
+        }
+        
+        .section-padding {
+            padding: 6rem 0;
+        }
+    </style>
+</head>
+<body class="bg-white">
+    
+    <!-- HEADER -->
+    <header class="fixed top-0 w-full bg-white bg-opacity-95 backdrop-blur-sm z-50 border-b border-subtle">
+        <div class="max-w-7xl mx-auto px-8 py-6 flex justify-between items-center">
+            <div class="heading-md" style="color: var(--color-oxford);">
+                Digitalización Náutica
+            </div>
+            <nav class="hidden md:flex space-x-12">
+                <a href="#servicios" class="body-text font-medium hover:opacity-70 transition-opacity">Servicios</a>
+                <a href="#precios" class="body-text font-medium hover:opacity-70 transition-opacity">Precios</a>
+                <a href="#contacto" class="body-text font-medium hover:opacity-70 transition-opacity">Contacto</a>
+            </nav>
+            <button class="md:hidden" onclick="toggleMobileMenu()">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="h-[60vh] flex items-center justify-center pt-20 px-8">
+        <div class="text-center max-w-4xl">
+            <h1 class="heading-xl" style="color: var(--color-oxford); margin-bottom: 2rem;">
+                Transformación Digital para la Industria Náutica
+            </h1>
+            <p class="body-text-lg mx-auto mb-8" style="color: var(--color-oxford);">
+                Soluciones tecnológicas sofisticadas que integran Stripe y Cal.com para optimizar tu operación marítima.
+            </p>
+            <div class="flex gap-6 justify-center">
+                <button class="btn-primary">Comenzar Ahora</button>
+                <button class="btn-secondary">Ver Demo</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- DIVIDER -->
+    <div class="px-8">
+        <div class="max-w-7xl mx-auto divider"></div>
+    </div>
+
+    <!-- SERVICIOS SECTION -->
+    <section id="servicios" class="section-padding px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-16">
+                <div class="accent-line"></div>
+                <h2 class="heading-lg" style="color: var(--color-oxford);">Servicios</h2>
+                <p class="body-text mt-4" style="color: var(--color-oxford);">
+                    Catálogo completo de soluciones para digitalizar tu operación.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Servicio 1 -->
+                <div class="service-card">
+                    <div class="h-12 w-12 mb-6 flex items-center justify-center">
+                        <svg class="w-8 h-8" style="stroke: var(--color-gold);" fill="none" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="heading-md mb-4" style="color: var(--color-oxford);">
+                        Integración de Pagos
+                    </h3>
+                    <p class="body-text" style="color: var(--color-oxford);">
+                        Implementación de Stripe para gestionar transacciones seguras y reportes en tiempo real.
+                    </p>
+                </div>
+
+                <!-- Servicio 2 -->
+                <div class="service-card">
+                    <div class="h-12 w-12 mb-6 flex items-center justify-center">
+                        <svg class="w-8 h-8" style="stroke: var(--color-gold);" fill="none" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="heading-md mb-4" style="color: var(--color-oxford);">
+                        Agendamiento Inteligente
+                    </h3>
+                    <p class="body-text" style="color: var(--color-oxford);">
+                        Cal.com integrado para optimizar citas y reservas con confirmación automática.
+                    </p>
+                </div>
+
+                <!-- Servicio 3 -->
+                <div class="service-card">
+                    <div class="h-12 w-12 mb-6 flex items-center justify-center">
+                        <svg class="w-8 h-8" style="stroke: var(--color-gold);" fill="none" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="heading-md mb-4" style="color: var(--color-oxford);">
+                        Analítica Avanzada
+                    </h3>
+                    <p class="body-text" style="color: var(--color-oxford);">
+                        Dashboards personalizados para monitorear KPIs y tendencias del sector marítimo.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- DIVIDER -->
+    <div class="px-8">
+        <div class="max-w-7xl mx-auto divider"></div>
+    </div>
+
+    <!-- VALOR SECTION -->
+    <section class="section-padding px-8" style="background-color: var(--color-oxford);">
+        <div class="max-w-4xl mx-auto">
+            <div class="accent-line" style="background-color: var(--color-gold);"></div>
+            <h2 class="heading-lg text-white mb-8">
+                Por qué confiar en nosotros
+            </h2>
+            <p class="body-text-lg text-white mb-12" style="color: #FFFFFF;">
+                Nuestra plataforma combina Stripe para transacciones seguras y Cal.com para agendamiento automatizado. Diseñada específicamente para agencias de digitalización náutica, ofrecemos integración seamless, seguridad de nivel empresarial y soporte técnico 24/7.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <p class="font-semibold text-white mb-2">Integración Completa</p>
+                    <p class="text-white opacity-90 body-text">Todo en una plataforma, sin complejidad.</p>
+                </div>
+                <div>
+                    <p class="font-semibold text-white mb-2">Seguridad Garantizada</p>
+                    <p class="text-white opacity-90 body-text">Estándares PCI-DSS y conformidad GDPR.</p>
+                </div>
+                <div>
+                    <p class="font-semibold text-white mb-2">Escalabilidad</p>
+                    <p class="text-white opacity-90 body-text">Crece con tu negocio sin limitaciones.</p>
+                </div>
+                <div>
+                    <p class="font-semibold text-white mb-2">Soporte Premium</p>
+                    <p class="text-white opacity-90 body-text">Equipo dedicado para tu éxito.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DIVIDER -->
+    <div class="px-8">
+        <div class="max-w-7xl mx-auto divider"></div>
+    </div>
+
+    <!-- PRECIOS SECTION -->
+    <section id="precios" class="section-padding px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-16">
+                <div class="accent-line"></div>
+                <h2 class="heading-lg" style="color: var(--color-oxford);">Planes de Precios</h2>
+                <p class="body-text mt-4" style="color: var(--color-oxford);">
+                    Transparencia total. Sin costos ocultos.
+                </p>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead>
+                        <tr class="border-subtle border-b">
+                            <th class="text-left py-6 px-6 body-text font-semibold" style="color: var(--color-oxford);">Plan</th>
+                            <th class="text-center py-6 px-6 body-text font-semibold" style="color: var(--color-oxford);">Startup</th>
+                            <th class="text-center py-6 px-6 body-text font-bold" style="color: var(--color-oxford);">Professional</th>
+                            <th class="text-center py-6 px-6 body-text font-semibold" style="color: var(--color-oxford);">Enterprise</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-subtle border-b">
+                            <td class="py-6 px-6 body-text" style="color: var(--color-oxford);">Integración Stripe</td>
+                            <td class="text-center py-6 px-6">✓</td>
+                            <td class="text-center py-6 px-6">✓</td>
+                            <td class="text-center py-6 px-6">✓</td>
+                        </tr>
+                        <tr class="border-subtle border-b">
+                            <td class="py-6 px-6 body-text" style="color: var(--color-oxford);">Cal.com Integration</td>
+                            <td class="text-center py-6 px-6">–</td>
+                            <td class="text-center py-6 px-6">✓</td>
+                            <td class="text-center py-6 px-6">✓</td>
+                        </tr>
+                        <tr class="border-subtle border-b">
+                            <td class="py-6 px-6 body-text" style="color: var(--color-oxford);">Usuarios Simultaneos</td>
+                            <td class="text-center py-6 px-6 body-text">5</td>
+                            <td class="text-center py-6 px-6 body-text">25</td>
+                            <td class="text-center py-6 px-6 body-text">Ilimitado</td>
+                        </tr>
+                        <tr class="border-subtle border-b">
+                            <td class="py-6 px-6 body-text" style="color: var(--color-oxford);">Dashboard Analytics</td>
+                            <td class="text-center py-6 px-6">–</td>
+                            <td class="text-center py-6 px-6">✓</td>
+                            <td class="text-center py-6 px-6">✓</td>
+                        </tr>
+                        <tr class="border-subtle border-b">
+                            <td class="py-6 px-6 body-text" style="color: var(--color-oxford);">Soporte API</td>
+                            <td class="text-center py-6 px-6">–</td>
+                            <td class="text-center py-6 px-6">–</td>
+                            <td class="text-center py-6 px-6">✓</td>
+                        </tr>
+                        <tr class="border-subtle border-b">
+                            <td class="py-6 px-6 body-text font-semibold" style="color: var(--color-oxford);">Precio Mensual</td>
+                            <td class="text-center py-6 px-6">
+                                <span class="text-2xl font-bold" style="color: var(--color-oxford);">$299</span>
+                            </td>
+                            <td class="text-center py-6 px-6">
+                                <span class="text-2xl font-bold" style="color: var(--color-oxford);">$799</span>
+                            </td>
+                            <td class="text-center py-6 px-6">
+                                <span class="body-text font-semibold">Consultar</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="py-6 px-6"></td>
+                            <td class="text-center py-6 px-6"><button class="btn-secondary">Empezar</button></td>
+                            <td class="text-center py-6 px-6"><button class="btn-primary">Seleccionar</button></td>
+                            <td class="text-center py-6 px-6"><button class="btn-secondary">Contactar</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- DIVIDER -->
+    <div class="px-8">
+        <div class="max-w-7xl mx-auto divider"></div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer id="contacto" class="section-padding px-8 bg-white">
+        <div class="max-w-7xl mx-auto mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                
+                <!-- Columna 1: Empresa -->
+                <div>
+                    <p class="heading-md mb-6" style="color: var(--color-oxford);">Empresa</p>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="body-text hover:opacity-60 transition-opacity">Sobre Nosotros</a></li>
+                        <li><a href="#" class="body-text hover:opacity-60 transition-opacity">Carreras</a></li>
+                        <li><a href="#" class="body-text hover:opacity-60 transition-opacity">Blog</a></li>
+                        <li><a href="#" class="body-text hover:opacity-60 transition-opacity">Prensa</a></li>
+                    </ul>
+                </div>
+
+                <!-- Columna 2: Producto -->
+                <div>
+                    <p class="heading-md mb-6" style="color: var(--color-oxford);">Producto</p>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="body-text hover:opacity-60 transition-opacity">Características</a></li>
+                        <li><a href="#" class="body-text hover:opacity-60 transition-opacity">Seguridad</a></li>
+                        <li><a href="#" class="body-text hover:opacity-60 transition-opacity">Documentación</a></li>
+                        <li><a href="#" class="body-text hover:opacity-60 transition-opacity">API Reference</a></li>
+                    </ul>
+                </div>
+
+                <!-- Columna 3: Legal -->
+                <div>
+                    <p class="heading-md mb-6" style="color: var(--color-oxford);">Legal</p>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="body-text hover:opacity-60 transition-opacity">Privacidad</a></li>
+                        <li><a href="#" class="body-text hover:opacity-60 transition-opacity">Términos</a></li>
+                        <li><a href="#" class="body-text hover:opacity-60 transition-opacity">Cookies</a></li>
+                        <li><a href="#" class="body-text hover:opacity-60 transition-opacity">Compliance</a></li>
+                    </ul>
+                </div>
+
+                <!-- Columna 4: Contacto -->
+                <div>
+                    <p class="heading-md mb-6" style="color: var(--color-oxford);">Contacto</p>
+                    <ul class="space-y-4">
+                        <li><a href="mailto:info@digitalnautica.com" class="body-text hover:opacity-60 transition-opacity">info@digitalnautica.com</a></li>
+                        <li><a href="tel:+34900000000" class="body-text hover:opacity-60 transition-opacity">+34 900 000 000</a></li>
+                        <li class="pt-2">
+                            <p class="body-text font-semibold mb-2">Síguenos</p>
+                            <div class="flex gap-4">
+                                <a href="#" class="text-sm hover:opacity-60 transition-opacity">LinkedIn</a>
+                                <a href="#" class="text-sm hover:opacity-60 transition-opacity">Twitter</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="divider mb-6"></div>
+        <div class="text-center">
+            <p class="body-text opacity-70">
+                © 2026 Digitalización Náutica. Todos los derechos reservados.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const nav = document.querySelector('nav');
+            nav.classList.toggle('hidden');
+        }
+
+        // Smooth scroll para links internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

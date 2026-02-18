@@ -1,0 +1,673 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfil Profesional - Náutica Jobs</title>
+  <link rel="stylesheet" href="/maritime.css">
+  <style>
+    body {
+      background: linear-gradient(180deg, #E8F4F8 0%, #F5FAFC 50%, #FFFFFF 100%);
+      min-height: 100vh;
+    }
+    
+    .profile-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 120px 24px 60px;
+    }
+
+    .profile-breadcrumb {
+      margin-bottom: 32px;
+    }
+
+    .profile-breadcrumb a {
+      color: var(--sky-blue);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .profile-breadcrumb a:hover {
+      color: var(--vibrant-pink);
+    }
+
+    .profile-header {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 32px;
+      align-items: start;
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 24px;
+      padding: 36px;
+      margin-bottom: 32px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .profile-avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--sky-blue) 0%, var(--soft-cyan) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--navy-dark);
+      font-size: 42px;
+      font-weight: 700;
+      font-family: 'Outfit', sans-serif;
+      flex-shrink: 0;
+      box-shadow: 0 8px 24px rgba(135, 206, 235, 0.3);
+    }
+
+    .profile-info {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .profile-name {
+      font-family: 'Outfit', sans-serif;
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--navy-dark);
+      margin: 0;
+    }
+
+    .profile-position {
+      font-size: 18px;
+      color: var(--vibrant-pink);
+      font-weight: 600;
+    }
+
+    .profile-meta {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    .profile-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      color: var(--text-medium);
+      background: rgba(135, 206, 235, 0.15);
+      padding: 6px 12px;
+      border-radius: 20px;
+    }
+
+    .profile-cta {
+      display: flex;
+      gap: 12px;
+      flex-direction: column;
+    }
+
+    .btn-contact {
+      background: linear-gradient(135deg, var(--vibrant-pink) 0%, var(--coral-pink) 100%);
+      color: white;
+      border: none;
+      padding: 14px 28px;
+      border-radius: 50px;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 8px 24px rgba(255, 107, 157, 0.35);
+    }
+
+    .btn-contact:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(255, 107, 157, 0.45);
+    }
+
+    .btn-contact.secondary {
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--navy-dark);
+      border: 2px solid rgba(135, 206, 235, 0.5);
+      box-shadow: 0 4px 16px rgba(0, 31, 63, 0.08);
+    }
+
+    .btn-contact.secondary:hover {
+      background: var(--seafoam-white);
+      border-color: var(--sky-blue);
+    }
+
+    .profile-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 28px;
+    }
+
+    .profile-section {
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 20px;
+      padding: 28px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .profile-section h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 22px;
+      margin: 0 0 20px 0;
+      color: var(--navy-dark);
+      font-weight: 700;
+    }
+
+    .section-content {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .detail-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(135, 206, 235, 0.2);
+    }
+
+    .detail-item:last-child {
+      border-bottom: none;
+    }
+
+    .detail-label {
+      font-weight: 600;
+      color: var(--navy-dark);
+      min-width: 140px;
+    }
+
+    .detail-value {
+      color: var(--text-medium);
+      text-align: right;
+      flex: 1;
+    }
+
+    .badges-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 8px 0;
+    }
+
+    .badge-profile {
+      background: linear-gradient(135deg, rgba(255, 107, 157, 0.15) 0%, rgba(255, 133, 162, 0.08) 100%);
+      color: var(--vibrant-pink);
+      border: 1.5px solid rgba(255, 107, 157, 0.3);
+      padding: 8px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      display: inline-block;
+    }
+
+    .badge-stcw {
+      background: linear-gradient(135deg, rgba(135, 206, 235, 0.2) 0%, rgba(127, 219, 255, 0.1) 100%);
+      color: var(--navy-light);
+      border-color: rgba(135, 206, 235, 0.4);
+    }
+
+    .languages-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 8px 0;
+    }
+
+    .language-tag {
+      background: rgba(135, 206, 235, 0.2);
+      color: var(--navy-dark);
+      padding: 8px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .academies-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 8px 0;
+    }
+
+    .academy-item {
+      background: rgba(135, 206, 235, 0.1);
+      border-left: 4px solid var(--vibrant-pink);
+      padding: 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      color: var(--text-medium);
+    }
+
+    .profile-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .sidebar-section {
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .sidebar-section h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 18px;
+      margin: 0 0 16px 0;
+      color: var(--navy-dark);
+      font-weight: 700;
+    }
+
+    .cv-section {
+      background: rgba(135, 206, 235, 0.1);
+      border: 2px solid rgba(135, 206, 235, 0.3);
+      border-radius: 16px;
+      padding: 24px;
+      text-align: center;
+    }
+
+    .cv-section p {
+      margin: 0 0 12px 0;
+      color: var(--navy-dark);
+      font-size: 14px;
+    }
+
+    .btn-cv {
+      background: linear-gradient(135deg, var(--sky-blue) 0%, var(--soft-cyan) 100%);
+      color: var(--navy-dark);
+      border: none;
+      padding: 12px 24px;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 13px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-cv:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(135, 206, 235, 0.4);
+    }
+
+    .experience-text {
+      color: var(--text-medium);
+      line-height: 1.8;
+      padding: 12px 0;
+      font-size: 15px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--vibrant-pink);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+
+    .back-link:hover {
+      color: var(--soft-pink);
+    }
+
+    .skills-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 8px 0;
+    }
+
+    .skill-item {
+      background: rgba(135, 206, 235, 0.2);
+      color: var(--navy-dark);
+      padding: 8px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      .profile-header {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .profile-avatar {
+        width: 100px;
+        height: 100px;
+        font-size: 36px;
+      }
+
+      .profile-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .profile-name {
+        font-size: 26px;
+      }
+
+      .profile-meta {
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .btn-contact {
+        width: 100%;
+      }
+    }
+
+    .profile-loading {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--text-medium);
+      font-size: 18px;
+    }
+
+    .profile-error {
+      background: rgba(255, 107, 157, 0.1);
+      border: 2px solid rgba(255, 107, 157, 0.3);
+      border-radius: 16px;
+      padding: 40px;
+      text-align: center;
+      color: var(--vibrant-pink);
+      margin: 40px 0;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-content">
+      <a href="/" class="navbar-brand">
+        <img class="navbar-logo" src="/logo.png" alt="Nautica Jobs">
+        Náutica Jobs
+      </a>
+      <ul class="navbar-links">
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/offers.html">Ofertas</a></li>
+        <li><a href="/talent.html">Talentos</a></li>
+        <li><a href="/company.html">Empresas</a></li>
+        <li><a href="/admin.html">Admin</a></li>
+      </ul>
+      <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="mobile-nav" id="mobileNav">
+        <a href="/">Inicio</a>
+        <a href="/offers.html">Ofertas</a>
+        <a href="/talent.html">Talentos</a>
+        <a href="/company.html">Empresas</a>
+        <a href="/admin.html">Admin</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="profile-container">
+    <a href="/talent.html" class="back-link">← Volver a Candidatos</a>
+
+    <div id="profile-content" class="profile-loading">
+      Cargando perfil...
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Náutica Jobs</h4>
+        <p>Plataforma líder de empleo marítimo conectando profesionales náuticos con oportunidades de excelencia.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Para Candidatos</h4>
+        <a href="/talent.html">Ver Profesionales</a>
+        <a href="/offers.html">Ofertas de Trabajo</a>
+        <a href="/apply.html">Postular</a>
+      </div>
+      <div class="footer-section">
+        <h4>Para Empresas</h4>
+        <a href="/company.html">Panel de Empresa</a>
+        <a href="/talent.html">Buscar Talento</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 Náutica Jobs. Todos los derechos reservados.
+    </div>
+  </footer>
+
+  <script>
+    // Datos de ejemplo para mostrar cuando no hay API
+    const sampleTalents = {
+      1: {
+        id: 1,
+        name: "Carlos Martínez",
+        position: "Capitán de Yate",
+        nationality: "Español",
+        yearsExperience: 15,
+        zone: "Mediterráneo",
+        availability: "Inmediata",
+        experience: "Más de 15 años de experiencia como Capitán en yates de lujo de hasta 60 metros. He navegado por todo el Mediterráneo, Caribe y Atlántico. Experiencia en charter de alto nivel y navegación transoceánica. Conocimiento profundo de mantenimiento de yates y gestión de tripulación.",
+        certifications: ["Yacht Master 500", "STCW II/2", "ISM Code", "Advanced Sail"],
+        languages: ["Español (Nativo)", "Inglés (C1)", "Francés (B2)"],
+        academies: ["Escuela Náutica de Mallorca", "Royal Yachting Association", "Academia Marítima de Cádiz"],
+        skills: ["Gestión de Tripulación", "Navegación GPS", "Meteorología", "Mantenimiento", "Catering", "Normativas ISM"],
+        stcwCertified: true,
+        medicalISM: true
+      },
+      2: {
+        id: 2,
+        name: "María González",
+        position: "Primera Oficial",
+        nationality: "Española",
+        yearsExperience: 7,
+        zone: "Internacional",
+        availability: "2 semanas",
+        experience: "7 años de experiencia en carga contenerizada y pesca de altura. He trabajado en barcos de investigación marina y participatedo en expediciones científicas.",
+        certifications: ["OOW", "GMDSS", "STCW II/1", "BLU"],
+        languages: ["Español (Nativo)", "Inglés (B2)", "Portugués (A2)"],
+        academies: ["Universidad Marítima de Vigo", "Instituto Náutico de Barcelona"],
+        skills: ["Navegación", "Gestión de Carga", "Comunicación", "Primeros Auxilios"],
+        stcwCertified: true,
+        medicalISM: false
+      },
+      3: {
+        id: 3,
+        name: "Antonio Ruiz",
+        position: "Jefe de Máquinas",
+        nationality: "Español",
+        yearsExperience: 20,
+        zone: "Mediterráneo",
+        availability: "1 mes",
+        experience: "20 años como Jefe de Máquinas en cruceros de lujo y yates privados. Especialista en motores Wärtsilä y Caterpillar. Amplia experiencia en gestión de mantenimiento preventivo y correctivo.",
+        certifications: ["STCW III/2", "Chief Engineer", "Wärtsilä Specialist", "Caterpillar Certified"],
+        languages: ["Español (Nativo)", "Inglés (C1)", "Italiano (B1)"],
+        academies: ["Escuela de Ingenieros Navales de Madrid", "Wärtsilä Training Center"],
+        skills: ["Motores Diésel", "Sistemas Eléctricos", "Climatización", "Gestión de Taller"],
+        stcwCertified: true,
+        medicalISM: true
+      }
+    };
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const talentId = parseInt(urlParams.get('id')) || 1;
+
+    function contactProfessional(id, name) {
+      const message = `Interesado en contactar con ${name} para una oportunidad laboral.`;
+      window.location.href = `/apply.html?talentId=${id}&message=${encodeURIComponent(message)}`;
+    }
+
+    function downloadCV(id, name) {
+      alert(`El currículum de ${name} estará disponible para descargar próximamente.\n\nPor favor, usa el botón "Solicitar Contacto" para coordinar la entrega del CV.`);
+    }
+
+    async function loadProfile() {
+      try {
+        // Intentar cargar desde la API primero
+        const response = await fetch(`/api/talent/${talentId}`);
+        if (response.ok) {
+          const talent = await response.json();
+          renderProfile(talent);
+        } else {
+          // Si la API falla, usar datos de ejemplo
+          throw new Error('API no disponible');
+        }
+      } catch (error) {
+        // Usar datos de ejemplo
+        const talent = sampleTalents[talentId] || sampleTalents[1];
+        if (talent) {
+          renderProfile(talent);
+        } else {
+          showError('Perfil no encontrado');
+        }
+      }
+    }
+
+    function showError(message) {
+      const content = document.getElementById('profile-content');
+      content.innerHTML = `
+        <div class="profile-error">
+          <h2>⚠️ Error al cargar el perfil</h2>
+          <p>${message}</p>
+          <a href="/talent.html" class="back-link">← Volver a Candidatos</a>
+        </div>
+      `;
+    }
+
+    function renderProfile(p) {
+      const content = document.getElementById('profile-content');
+
+      const initials = p.name.split(' ').map(n => n[0]).join('').toUpperCase();
+
+      const certificationsHTML = p.certifications.map(cert => 
+        `<span class="badge-profile">${cert}</span>`
+      ).join('');
+
+      const languagesHTML = p.languages.map(lang => 
+        `<span class="language-tag">${lang}</span>`
+      ).join('');
+
+      const academiesHTML = p.academies.map(academy => 
+        `<div class="academy-item">${academy}</div>`
+      ).join('');
+
+      const skillsHTML = p.skills.map(skill => 
+        `<span class="skill-item">${skill}</span>`
+      ).join('');
+
+      content.innerHTML = `
+        <div class="profile-header">
+          <div class="profile-avatar">${initials}</div>
+         
+          <div class="profile-info">
+            <h1 class="profile-name">${p.name}</h1>
+            <div class="profile-position">${p.position}</div>
+            <div class="profile-meta">
+              <span class="profile-meta-item">${p.nationality}</span>
+              <span class="profile-meta-item">${p.yearsExperience} años experiencia</span>
+              <span class="profile-meta-item">${p.zone}</span>
+              <span class="profile-meta-item">${p.availability}</span>
+            </div>
+          </div>
+
+          <div class="profile-cta">
+            <button class="btn-contact" onclick="contactProfessional(${p.id}, '${p.name}')">Solicitar Contacto</button>
+            <button class="btn-contact secondary" onclick="alert('Esta función estará disponible pronto')">Mensaje Directo</button>
+          </div>
+        </div>
+
+        <div class="profile-grid">
+          <div>
+            <div class="profile-section">
+              <h2>Experiencia Profesional</h2>
+              <div class="experience-text">
+                ${p.experience}
+              </div>
+            </div>
+
+            <div class="profile-section" style="margin-top: 24px;">
+              <h2>Educación y Certificaciones</h2>
+              <div class="section-content">
+                <h3 style="margin: 16px 0 8px 0; font-size: 14px; color: var(--vibrant-pink); font-weight: 600;">Certificaciones Profesionales</h3>
+                <div class="badges-container">
+                  ${p.stcwCertified ? '<span class="badge-profile badge-stcw">✓ STCW International</span>' : ''}
+                  ${p.medicalISM ? '<span class="badge-profile">🏥 Medical ISM</span>' : ''}
+                  ${certificationsHTML}
+                </div>
+
+                <h3 style="margin: 20px 0 8px 0; font-size: 14px; color: var(--vibrant-pink); font-weight: 600;">Academias y Formación</h3>
+                <div class="academies-list">
+                  ${academiesHTML}
+                </div>
+              </div>
+            </div>
+
+            <div class="profile-section" style="margin-top: 24px;">
+              <h2>Competencias Técnicas</h2>
+              <div class="skills-cloud">
+                ${skillsHTML}
+              </div>
+            </div>
+          </div>
+
+          <div class="profile-sidebar">
+            <div class="sidebar-section">
+              <h3>Idiomas</h3>
+              <div class="languages-list">
+                ${languagesHTML}
+              </div>
+            </div>
+
+            <div class="sidebar-section">
+              <h3>Detalles</h3>
+              <div class="section-content">
+                <div class="detail-item">
+                  <span class="detail-label">Experiencia:</span>
+                  <span class="detail-value">${p.yearsExperience} años</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-label">Nacionalidad:</span>
+                  <span class="detail-value">${p.nationality}</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-label">Zona:</span>
+                  <span class="detail-value">${p.zone}</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-label">Disponibilidad:</span>
+                  <span class="detail-value">${p.availability}</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="cv-section">
+              <p>¿Necesitas ver su CV?</p>
+              <button class="btn-cv" onclick="downloadCV(${p.id}, '${p.name}')">Descargar CV</button>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    // Cargar el perfil al iniciar
+    loadProfile();
+  </script>
+  <script>
+    function toggleMobileMenu() {
+      const btn = document.querySelector('.mobile-menu-btn');
+      const nav = document.getElementById('mobileNav');
+      btn.classList.toggle('active');
+      nav.classList.toggle('active');
+    }
+  </script>
+</body>
+</html>

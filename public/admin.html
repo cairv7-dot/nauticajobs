@@ -1,0 +1,78 @@
+﻿<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Admin - Náutica Jobs</title>
+  <link rel="stylesheet" href="/maritime.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-content">
+      <a href="/" class="navbar-brand">
+        <img class="navbar-logo" src="/logo.png" alt="Nautica Jobs">
+        Náutica Jobs
+      </a>
+      <ul class="navbar-links">
+        <li><a href="/">Inicio</a></li>        <li><a href=\"/offers.html\">Ofertas</a></li>
+        <li><a href=\"/talent.html\">Candidatos</a></li>        <li><a href="/admin.html">Admin</a></li>
+      </ul>
+      <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="mobile-nav" id="mobileNav">
+        <a href="/">Inicio</a>
+        <a href="/offers.html">Ofertas</a>
+        <a href="/talent.html">Candidatos</a>
+        <a href="/admin.html">Admin</a>
+      </div>
+    </div>
+  </nav>
+  <main>
+    <section id="login-section">
+      <h2>Acceso administrador</h2>
+      <form id="login-form">
+        <label>Contraseña<br><input type="password" name="password" required></label>
+        <button type="submit">Entrar</button>
+        <div id="login-result"></div>
+      </form>
+    </section>
+
+    <section id="admin-section" style="display:none">
+      <h2>Crear / Editar oferta</h2>
+      <form id="offer-form">
+        <input type="hidden" name="id">
+        <label>Título<br><input name="title" required></label>
+        <label>Ubicación<br><input name="location" required></label>
+        <label>Tipo<br><input name="type"></label>
+        <label>Salario<br><input name="salary"></label>
+        <label>Descripción<br><textarea name="description"></textarea></label>
+        <button type="submit">Guardar</button>
+        <button type="button" id="reset-btn">Nuevo</button>
+        <button type="button" id="logout-btn">Salir</button>
+      </form>
+    </section>
+
+    <section id="list-section" style="display:none">
+      <h2>Ofertas</h2>
+      <div id="admin-offers">Cargando...</div>
+    </section>
+    <section id="apps-section" style="display:none">
+      <h2>Candidaturas</h2>
+      <div id="applications-list">Cargando candidaturas...</div>
+    </section>
+  </main>
+  <footer><small>Admin demo</small></footer>
+  <script src="/admin.js"></script>
+  <script>
+    function toggleMobileMenu() {
+      const btn = document.querySelector('.mobile-menu-btn');
+      const nav = document.getElementById('mobileNav');
+      btn.classList.toggle('active');
+      nav.classList.toggle('active');
+    }
+  </script>
+</body>
+</html>

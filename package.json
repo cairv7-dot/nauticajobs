@@ -1,0 +1,22 @@
+{
+  "name": "nautica-jobs",
+  "version": "1.0.0",
+  "description": "Portal de empleo náutico - backend + frontend",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.6.1",
+    "express": "^4.18.2",
+    "grammy": "^1.21.0",
+    "jsonwebtoken": "^9.0.0",
+    "multer": "^1.4.5-lts.1",
+    "node-cron": "^3.0.3",
+    "nodemailer": "^6.9.3",
+    "telegram-mtproto": "^1.0.5"
+  }
+}

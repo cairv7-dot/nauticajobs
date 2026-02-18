@@ -1,0 +1,1055 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ofertas de Empleo - Náutica Jobs</title>
+  <link rel="stylesheet" href="/maritime.css">
+  <style>
+    body {
+      background: linear-gradient(180deg, #E8F4F8 0%, #F5FAFC 50%, #FFFFFF 100%);
+    }
+
+    /* ===== HERO MEJORADO ===== */
+    .hero-offers-enhanced {
+      position: relative;
+      min-height: 400px;
+      display: flex;
+      align-items: center;
+      padding: 140px 24px 80px;
+      background: 
+        linear-gradient(135deg, rgba(0, 31, 63, 0.65) 0%, rgba(46, 134, 171, 0.4) 100%),
+        url('/offers-bg.png') center center / cover no-repeat;
+      background-attachment: fixed;
+      overflow: hidden;
+    }
+    .hero-offers-enhanced::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      height: 80px;
+      background: linear-gradient(180deg, transparent 0%, #E8F4F8 100%);
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 1280px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 8px 18px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.95);
+      margin-bottom: 20px;
+      letter-spacing: 0.03em;
+    }
+    .hero-badge .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background: #4ade80;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.3); }
+    }
+    .hero-inner h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 16px;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+    }
+    .hero-inner p {
+      font-size: 17px;
+      color: rgba(255, 255, 255, 0.88);
+      line-height: 1.7;
+      max-width: 560px;
+    }
+    .hero-stats {
+      display: flex;
+      gap: 32px;
+      margin-top: 28px;
+    }
+    .hero-stat {
+      text-align: center;
+    }
+    .hero-stat .stat-number {
+      font-family: 'Outfit', sans-serif;
+      font-size: 28px;
+      font-weight: 800;
+      color: #fff;
+      display: block;
+    }
+    .hero-stat .stat-label {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.7);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 600;
+    }
+
+    /* ===== SECCIÓN PRINCIPAL ===== */
+    .offers-section {
+      max-width: 1280px;
+      margin: -30px auto 0;
+      padding: 0 24px 80px;
+      position: relative;
+      z-index: 5;
+    }
+
+    /* ===== FILTROS REDISEÑADOS ===== */
+    .search-panel {
+      background: #fff;
+      border-radius: 20px;
+      padding: 28px 32px;
+      box-shadow: 0 4px 24px rgba(0, 31, 63, 0.08), 0 1px 3px rgba(0, 31, 63, 0.04);
+      margin-bottom: 40px;
+      border: 1px solid rgba(135, 206, 235, 0.2);
+    }
+    .search-panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .search-panel-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: #001F3F;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .search-panel-title svg {
+      width: 20px;
+      height: 20px;
+      color: #2E86AB;
+    }
+    .results-count {
+      font-size: 13px;
+      color: #6B8CAE;
+      font-weight: 500;
+    }
+    .results-count strong {
+      color: #2E86AB;
+      font-weight: 700;
+    }
+    .search-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr auto;
+      gap: 14px;
+      align-items: end;
+    }
+    .search-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .search-field label {
+      font-size: 12px;
+      font-weight: 700;
+      color: #3A5A7C;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .search-field input,
+    .search-field select {
+      padding: 13px 16px;
+      border: 2px solid #E8F4F8;
+      border-radius: 12px;
+      font-size: 14px;
+      font-family: 'DM Sans', sans-serif;
+      color: #001F3F;
+      background: #FAFCFE;
+      transition: all 0.25s ease;
+      outline: none;
+    }
+    .search-field input:focus,
+    .search-field select:focus {
+      border-color: #2E86AB;
+      background: #fff;
+      box-shadow: 0 0 0 4px rgba(46, 134, 171, 0.08);
+    }
+    .search-field input::placeholder {
+      color: #9BB5CC;
+    }
+    .btn-search {
+      padding: 13px 32px;
+      background: linear-gradient(135deg, #001F3F 0%, #0A3A5C 100%);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 14px;
+      font-family: 'DM Sans', sans-serif;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+    .btn-search:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 31, 63, 0.25);
+    }
+    .btn-search svg {
+      width: 16px;
+      height: 16px;
+    }
+    .btn-clear {
+      padding: 13px 16px;
+      background: #f1f5f9;
+      border: 2px solid #e2e8f0;
+      border-radius: 10px;
+      color: #64748b;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+    .btn-clear:hover {
+      background: #fee2e2;
+      border-color: #fecaca;
+      color: #ef4444;
+    }
+    .btn-clear svg {
+      width: 16px;
+      height: 16px;
+    }
+    .button-group {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    /* ===== SECTION HEADER ===== */
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 28px;
+    }
+    .section-header h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 24px;
+      font-weight: 800;
+      color: #001F3F;
+      margin: 0;
+      text-align: left;
+      letter-spacing: -0.02em;
+    }
+    .section-header h2::after {
+      display: none;
+    }
+    .section-header .sort-label {
+      font-size: 13px;
+      color: #6B8CAE;
+      font-weight: 500;
+    }
+
+    /* ===== GRID DE OFERTAS ===== */
+    .offers-grid-pro {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 24px;
+    }
+
+    /* ===== TARJETA DE OFERTA PROFESIONAL ===== */
+    .offer-card {
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0, 31, 63, 0.06);
+      border: 1px solid rgba(135, 206, 235, 0.15);
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      min-height: 420px;
+    }
+    .offer-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 36px rgba(0, 31, 63, 0.12);
+      border-color: rgba(46, 134, 171, 0.3);
+    }
+
+    /* Card Header */
+    .offer-card-header {
+      padding: 24px 24px 18px;
+      border-bottom: 1px solid #F0F6FA;
+      position: relative;
+    }
+    .offer-card-header .offer-type-badge {
+      display: inline-block;
+      padding: 5px 12px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 12px;
+    }
+    .badge-fulltime {
+      background: #E0F2FE;
+      color: #0369A1;
+    }
+    .badge-parttime {
+      background: #FEF3C7;
+      color: #92400E;
+    }
+    .badge-seasonal {
+      background: #ECFDF5;
+      color: #065F46;
+    }
+    .offer-card-header h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: #001F3F;
+      margin-bottom: 10px;
+      line-height: 1.35;
+      letter-spacing: -0.01em;
+    }
+    .offer-location {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: #6B8CAE;
+      font-weight: 500;
+    }
+    .offer-location svg {
+      width: 14px;
+      height: 14px;
+      color: #2E86AB;
+      flex-shrink: 0;
+    }
+    .offer-time-badge {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #6B8CAE;
+      background: #F0F6FA;
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    /* Card Body */
+    .offer-card-body {
+      padding: 18px 24px;
+      flex: 1;
+    }
+    .offer-card-body .offer-description {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #5A7A96;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      margin-bottom: 14px;
+    }
+    .offer-contact-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .contact-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      background: #F0F8FF;
+      border-radius: 8px;
+      font-size: 12px;
+      color: #3A5A7C;
+      font-weight: 500;
+      border: 1px solid #E0EEF6;
+    }
+    .contact-chip a {
+      color: #2E86AB;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .contact-chip a:hover {
+      text-decoration: underline;
+    }
+
+    /* Card Footer */
+    .offer-card-footer {
+      padding: 16px 24px;
+      border-top: 1px solid #F0F6FA;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #FAFCFE;
+    }
+    .offer-salary-tag {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .offer-salary-tag .salary-icon {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, #E0F2FE 0%, #BAE6FD 100%);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+    .offer-salary-tag .salary-amount {
+      font-family: 'Outfit', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: #0369A1;
+    }
+    .offer-salary-tag .salary-label {
+      font-size: 11px;
+      color: #6B8CAE;
+      font-weight: 500;
+    }
+    .btn-view-offer {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 22px;
+      background: linear-gradient(135deg, #001F3F 0%, #0A3A5C 100%);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      transition: all 0.3s ease;
+    }
+    .btn-view-offer:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 31, 63, 0.25);
+    }
+    .btn-view-offer svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    /* ===== EMPTY STATE ===== */
+    .empty-state {
+      text-align: center;
+      padding: 60px 24px;
+      grid-column: 1 / -1;
+    }
+    .empty-state .empty-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+    .empty-state h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: #001F3F;
+      margin-bottom: 8px;
+    }
+    .empty-state p {
+      color: #6B8CAE;
+      font-size: 15px;
+    }
+
+    /* ===== TRUST BANNER ===== */
+    .trust-banner {
+      background: #fff;
+      border-radius: 16px;
+      padding: 32px 40px;
+      margin-top: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 48px;
+      box-shadow: 0 2px 12px rgba(0, 31, 63, 0.05);
+      border: 1px solid rgba(135, 206, 235, 0.15);
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .trust-item .trust-icon {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, #E0F2FE 0%, #BAE6FD 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    .trust-item .trust-text {
+      font-size: 13px;
+      font-weight: 600;
+      color: #3A5A7C;
+      line-height: 1.4;
+    }
+    .trust-item .trust-text span {
+      display: block;
+      font-size: 11px;
+      font-weight: 400;
+      color: #9BB5CC;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .search-grid {
+        grid-template-columns: 1fr;
+      }
+      .offers-grid-pro {
+        grid-template-columns: 1fr;
+      }
+      .hero-stats {
+        gap: 20px;
+      }
+      .trust-banner {
+        flex-direction: column;
+        gap: 20px;
+        padding: 24px;
+      }
+    }
+    @media (max-width: 600px) {
+      .hero-offers-enhanced {
+        min-height: 340px;
+        padding: 120px 20px 60px;
+      }
+      .search-panel {
+        padding: 20px;
+      }
+      .offers-grid-pro {
+        grid-template-columns: 1fr;
+      }
+      .offer-card {
+        min-height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-content">
+      <a href="/" class="navbar-brand">
+        <img class="navbar-logo" src="/logo.png" alt="Nautica Jobs">
+        Náutica Jobs
+      </a>
+      <ul class="navbar-links">
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/offers.html">Ofertas</a></li>
+        <li><a href="/talent.html">Talentos</a></li>
+        <li><a href="/company.html">Empresas</a></li>
+        <li><a href="/admin.html">Admin</a></li>
+      </ul>
+      <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="mobile-nav" id="mobileNav">
+        <a href="/">Inicio</a>
+        <a href="/offers.html">Ofertas</a>
+        <a href="/talent.html">Talentos</a>
+        <a href="/company.html">Empresas</a>
+        <a href="/admin.html">Admin</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero-offers-enhanced">
+    <div class="hero-inner">
+      <div class="hero-badge">
+        <span class="pulse-dot"></span>
+        Ofertas actualizadas en tiempo real
+      </div>
+      <h1>Encuentra tu próximo<br>destino profesional</h1>
+      <p>Oportunidades verificadas en el sector marítimo. Capitanes, oficiales, ingenieros y tripulación para yates, buques y embarcaciones.</p>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="stat-number" id="totalOffers">--</span>
+          <span class="stat-label">Ofertas activas</span>
+        </div>
+        <div class="hero-stat">
+          <span class="stat-number" id="newToday">--</span>
+          <span class="stat-label">Nuevas hoy</span>
+        </div>
+        <div class="hero-stat">
+          <span class="stat-number">24h</span>
+          <span class="stat-label">Actualización</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <section class="offers-section">
+    <!-- Panel de búsqueda -->
+    <div class="search-panel">
+      <div class="search-panel-header">
+        <div class="search-panel-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          Buscar ofertas
+        </div>
+        <div class="results-count" id="resultsCount"></div>
+      </div>
+      <div class="search-grid">
+        <div class="search-field">
+          <label>Cargo o palabra clave</label>
+          <input type="text" id="searchJob" placeholder="Ej: Capitán, Oficial, Marinero...">
+        </div>
+        <div class="search-field">
+          <label>Tipo de buque</label>
+          <select id="shipType">
+            <option value="">Todos</option>
+            <option value="yate">Yate</option>
+            <option value="velero">Velero</option>
+            <option value="catamaran">Catamarán</option>
+            <option value="remolcador">Remolcador</option>
+            <option value="pesca">Pesca</option>
+            <option value="carga">Carga</option>
+            <option value="pasaje">Pasaje</option>
+            <option value="ferry">Ferry</option>
+            <option value="oceanografico">Oceanográfico</option>
+          </select>
+        </div>
+        <div class="search-field">
+          <label>Zona</label>
+          <select id="zone">
+            <option value="">Todas</option>
+            <option value="espana">España</option>
+            <option value="mallorca">Mallorca</option>
+            <option value="barcelona">Barcelona</option>
+            <option value="valencia">Valencia</option>
+            <option value="alicante">Alicante</option>
+            <option value="cadiz">Cádiz</option>
+            <option value="malaga">Málaga</option>
+            <option value="galicia">Galicia</option>
+            <option value="francia">Francia</option>
+            <option value="italia">Italia</option>
+            <option value="grecia">Grecia</option>
+            <option value="malta">Malta</option>
+            <option value="uk">Reino Unido</option>
+            <option value="caribe">Caribe</option>
+            <option value="international">Internacional</option>
+          </select>
+        </div>
+        <div class="button-group">
+          <button class="btn-search" onclick="filterJobs()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            Buscar
+          </button>
+          <button class="btn-clear" onclick="clearFilters()" title="Limpiar filtros">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Header de sección -->
+    <div class="section-header">
+      <h2>Ofertas Recientes</h2>
+      <span class="sort-label">Ordenadas por fecha de publicación</span>
+    </div>
+
+    <!-- Grid de ofertas -->
+    <div class="offers-grid-pro" id="jobsGrid">
+      <div class="empty-state">
+        <div class="empty-icon">⏳</div>
+        <h3>Cargando ofertas...</h3>
+        <p>Estamos obteniendo las últimas oportunidades para ti</p>
+      </div>
+    </div>
+
+    <!-- Trust Banner -->
+    <div class="trust-banner">
+      <div class="trust-item">
+        <div class="trust-icon">🔒</div>
+        <div class="trust-text">
+          Ofertas verificadas
+          <span>Revisadas por nuestro equipo</span>
+        </div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">⚡</div>
+        <div class="trust-text">
+          Actualización automática
+          <span>Nuevas ofertas cada hora</span>
+        </div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">🌍</div>
+        <div class="trust-text">
+          Cobertura internacional
+          <span>Mediterráneo, Atlántico y más</span>
+        </div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">📱</div>
+        <div class="trust-text">
+          Contacto directo
+          <span>Conecta con el empleador</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Náutica Jobs</h4>
+        <p>Plataforma líder de empleo marítimo conectando profesionales náuticos con oportunidades de excelencia.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Enlaces Rápidos</h4>
+        <a href="/offers.html">Ofertas</a>
+        <a href="/talent.html">Talentos</a>
+        <a href="/company.html">Empresas</a>
+      </div>
+      <div class="footer-section">
+        <h4>Contacto</h4>
+        <p>info@nauticajobs.com</p>
+        <p>+34 900 123 456</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 Náutica Jobs. Todos los derechos reservados.
+    </div>
+  </footer>
+
+  <script>
+    let allJobs = [];
+
+    function getDaysAgo(publishedAt) {
+      if (!publishedAt) return null;
+      const published = new Date(publishedAt);
+      const now = new Date();
+      const diffTime = Math.abs(now - published);
+      return Math.floor(diffTime / (1000 * 60 * 60 * 24));
+    }
+
+    function formatTimeAgo(publishedAt) {
+      if (!publishedAt) return '';
+      const published = new Date(publishedAt);
+      const now = new Date();
+      const diffTime = Math.abs(now - published);
+      const diffHours = Math.floor(diffTime / (1000 * 60 * 60));
+      const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+      
+      if (diffHours < 1) return 'Hace menos de 1 hora';
+      if (diffHours < 24) return `Hace ${diffHours} hora${diffHours !== 1 ? 's' : ''}`;
+      if (diffDays === 0) return 'Hoy';
+      if (diffDays === 1) return 'Ayer';
+      if (diffDays < 7) return `Hace ${diffDays} días`;
+      if (diffDays < 30) return `Hace ${Math.floor(diffDays/7)} sem`;
+      return `Hace ${Math.floor(diffDays/30)} mes`;
+    }
+
+    function getSalaryDisplay(salary) {
+      if (!salary) return 'No especificado';
+      
+      // Check for salary range (e.g., "2500-3500 €/mes")
+      const rangeMatch = salary.match(/(\d{3,5})\s*[-–]\s*(\d{3,5})/);
+      if (rangeMatch) {
+        return rangeMatch[1] + '-' + rangeMatch[2] + '€';
+      }
+      
+      // Check for single number salary
+      const salaryMatch = salary.match(/(\d{3,5})/);
+      if (salaryMatch && salaryMatch[1]) {
+        const num = parseInt(salaryMatch[1]);
+        if (num >= 100 && num <= 20000) return salaryMatch[1] + '€';
+      }
+      
+      // Check for negotiation keywords
+      if (salary.toLowerCase().match(/negociable|a negociar|consultar|experiencia|competitivo|acordar/)) {
+        return 'Negociable';
+      }
+      
+      // Check for "Sin especificar" or similar
+      if (salary.toLowerCase().match(/sin especificar|sin especificar|tbd|pendiente/)) {
+        return 'No especificado';
+      }
+      
+      // If there's any other salary info, show it
+      if (salary && salary.length > 0 && salary.length < 50) {
+        return salary;
+      }
+      
+      return 'No especificado';
+    }
+
+    function getTypeBadge(type) {
+      const t = (type || 'full-time').toLowerCase();
+      if (t === 'seasonal' || t === 'temporal') return { label: 'Temporal', class: 'badge-seasonal' };
+      if (t === 'part-time' || t === 'parcial') return { label: 'Parcial', class: 'badge-parttime' };
+      return { label: 'Jornada Completa', class: 'badge-fulltime' };
+    }
+
+    async function loadJobs() {
+      try {
+        const response = await fetch('/api/offers');
+        if (!response.ok) throw new Error('Error al cargar ofertas');
+        allJobs = await response.json();
+        allJobs.sort((a, b) => {
+          const dateA = new Date(a.publishedAt || a.sourceDate || 0);
+          const dateB = new Date(b.publishedAt || b.sourceDate || 0);
+          return dateB - dateA;
+        });
+        renderJobs(allJobs);
+        updateStats();
+      } catch (error) {
+        console.error('Error cargando ofertas:', error);
+        allJobs = getLocalJobs();
+        renderJobs(allJobs);
+        updateStats();
+      }
+    }
+
+    function updateStats() {
+      document.getElementById('totalOffers').textContent = allJobs.length;
+      const today = new Date().toDateString();
+      const newToday = allJobs.filter(j => {
+        const d = new Date(j.publishedAt || j.sourceDate || 0);
+        return d.toDateString() === today;
+      }).length;
+      document.getElementById('newToday').textContent = newToday;
+    }
+
+    function renderJobs(jobsToRender) {
+      const grid = document.getElementById('jobsGrid');
+      grid.innerHTML = '';
+
+      document.getElementById('resultsCount').innerHTML = 
+        `<strong>${jobsToRender.length}</strong> oferta${jobsToRender.length !== 1 ? 's' : ''} encontrada${jobsToRender.length !== 1 ? 's' : ''}`;
+
+      if (jobsToRender.length === 0) {
+        grid.innerHTML = `
+          <div class="empty-state">
+            <div class="empty-icon">🔍</div>
+            <h3>Sin resultados</h3>
+            <p>No se encontraron ofertas con esos criterios. Prueba con otros filtros.</p>
+          </div>`;
+        return;
+      }
+
+      jobsToRender.forEach(job => {
+        const daysAgo = formatTimeAgo(job.publishedAt || job.sourceDate);
+        const displayText = job.summary || (job.description ? job.description.substring(0, 160) + '...' : 'Sin descripción disponible');
+        const badge = getTypeBadge(job.type);
+        const salaryDisplay = getSalaryDisplay(job.salary);
+        const displayLocation = (job.location && job.location.length > 2 && !(/^\d+$/.test(job.location))) 
+          ? job.location : 'España';
+
+        // Contact chips
+        let contactHTML = '';
+        const chips = [];
+        if (job.companyName && job.companyName.trim()) {
+          chips.push(`<span class="contact-chip">🏢 ${job.companyName}</span>`);
+        }
+        if (job.contactEmail && job.contactEmail.trim()) {
+          chips.push(`<span class="contact-chip">📧 <a href="mailto:${job.contactEmail}">${job.contactEmail}</a></span>`);
+        }
+        if (job.contactPhone && job.contactPhone.trim()) {
+          chips.push(`<span class="contact-chip">📞 ${job.contactPhone}</span>`);
+        }
+        if (chips.length > 0) {
+          contactHTML = `<div class="offer-contact-strip">${chips.join('')}</div>`;
+        }
+
+        const card = document.createElement('div');
+        card.className = 'offer-card';
+        card.innerHTML = `
+          <div class="offer-card-header">
+            <span class="offer-type-badge ${badge.class}">${badge.label}</span>
+            ${daysAgo ? `<span class="offer-time-badge">${daysAgo}</span>` : ''}
+            <h3>${job.title || 'Oferta de Empleo'}</h3>
+            <div class="offer-location">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              ${displayLocation}
+            </div>
+          </div>
+          <div class="offer-card-body">
+            <p class="offer-description">${displayText}</p>
+            ${contactHTML}
+          </div>
+          <div class="offer-card-footer">
+            <div class="offer-salary-tag">
+              <div class="salary-icon">💰</div>
+              <div>
+                <div class="salary-amount">${salaryDisplay}</div>
+                <div class="salary-label">Salario</div>
+              </div>
+            </div>
+            <a href="/job.html?id=${job.id}" class="btn-view-offer">
+              Ver oferta
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function filterJobs() {
+      const searchTerm = document.getElementById('searchJob').value.toLowerCase();
+      const shipType = document.getElementById('shipType').value;
+      const zone = document.getElementById('zone').value;
+
+      const filtered = allJobs.filter(job => {
+        // Buscar en título, descripción, summary y keywords
+        const matchSearch = !searchTerm || 
+          (job.title || '').toLowerCase().includes(searchTerm) || 
+          (job.description || '').toLowerCase().includes(searchTerm) ||
+          (job.summary || '').toLowerCase().includes(searchTerm) ||
+          (job.location || '').toLowerCase().includes(searchTerm) ||
+          (job.keywords || []).some(k => k.toLowerCase().includes(searchTerm));
+        
+        // Tipo de buque - buscar en título y descripción
+        let matchType = true;
+        if (shipType) {
+          const typeKeywords = {
+            'yate': ['yate', 'yacht', 'motoryacht', 'motor yacht', 'superyate', 'superyacht'],
+            'velero': ['velero', 'sailing', 'sail', 'vela', 'sailboat', 'yate a vela'],
+            'catamaran': ['catamaran', 'catamarán'],
+            'remolcador': ['remolcador', 'tug', 'tow'],
+            'pesca': ['pesca', 'fishing', 'pescador', 'arrastre'],
+            'carga': ['carga', 'cargo', 'mercanc', 'bulk'],
+            'pasaje': ['pasaje', 'passenger', 'crucero'],
+            'ferry': ['ferry', 'ferri'],
+            'oceanografico': ['oceanograf', 'oceanograph', 'investigacion', 'research']
+          };
+          const keywords = typeKeywords[shipType] || [shipType];
+          const textToSearch = ((job.title || '') + ' ' + (job.description || '')).toLowerCase();
+          matchType = keywords.some(k => textToSearch.includes(k.toLowerCase()));
+        }
+        
+        // Zona - buscar en ubicación
+        let matchZone = true;
+        if (zone) {
+          const zoneKeywords = {
+            'espana': ['españa', 'espana', 'spain', 'spanish'],
+            'mallorca': ['mallorca', 'palma', 'baleares', 'balears', 'ibiza', 'menorca'],
+            'barcelona': ['barcelona', 'bcn'],
+            'valencia': ['valencia', 'denia', 'xabia', 'alicante'],
+            'alicante': ['alicante', 'alacant', 'benidorm', 'torrevieja'],
+            'cadiz': ['cádiz', 'cadiz', 'tarifa', 'rota', 'el puerto'],
+            'malaga': ['málaga', 'malaga', 'marbella', 'estepona', 'fuengirola'],
+            'galicia': ['galicia', 'vigo', 'coruña', 'a coruña', 'pontevedra', 'lugo', 'orense'],
+            'francia': ['francia', 'france', 'cannes', 'niza', 'nice', 'costa azul', 'monaco', 'mónaco'],
+            'italia': ['italia', 'italy', 'sicilia', 'sardegna', 'sardenya', 'napoles', 'napoli'],
+            'grecia': ['grecia', 'greece', 'aten', 'athens', 'mykonos', 'santorini', ' Rodas', 'creta'],
+            'malta': ['malta'],
+            'uk': ['uk', 'reino unido', 'united kingdom', 'england', 'uk'],
+            'caribe': ['caribe', 'caribbean', 'bahamas', 'virgin', 'aruba', 'curacao'],
+            'international': ['internacional', 'international', 'worldwide', 'world wide']
+          };
+          const keywords = zoneKeywords[zone] || [zone];
+          const location = (job.location || '').toLowerCase();
+          matchZone = keywords.some(k => location.includes(k.toLowerCase()));
+        }
+        
+        return matchSearch && matchType && matchZone;
+      });
+
+      renderJobs(filtered);
+    }
+
+    // Enter key triggers search
+    document.getElementById('searchJob').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') filterJobs();
+    });
+    
+    // Autocomplete search suggestions
+    const searchInput = document.getElementById('searchJob');
+    let suggestionsTimeout;
+    
+    searchInput.addEventListener('input', function() {
+      clearTimeout(suggestionsTimeout);
+      suggestionsTimeout = setTimeout(() => {
+        const term = this.value.toLowerCase();
+        if (term.length < 2) return;
+        
+        // Get unique keywords from all jobs
+        const keywords = new Set();
+        allJobs.forEach(job => {
+          // Extract words from title
+          if (job.title) {
+            job.title.split(/\s+/).forEach(w => {
+              if (w.length > 3 && !['para', 'busca', 'oferta', 'empleo', 'trabajo'].includes(w.toLowerCase())) {
+                keywords.add(w);
+              }
+            });
+          }
+          // Extract locations
+          if (job.location) {
+            keywords.add(job.location);
+          }
+        });
+        
+        // Filter suggestions based on input
+        const matches = [...keywords].filter(k => k.toLowerCase().includes(term)).slice(0, 5);
+        showSuggestions(matches);
+      }, 300);
+    });
+    
+    function showSuggestions(matches) {
+      // Could implement a dropdown here - for now, the search is instant
+    }
+    
+    function clearFilters() {
+      document.getElementById('searchJob').value = '';
+      document.getElementById('shipType').value = '';
+      document.getElementById('zone').value = '';
+      renderJobs(allJobs);
+    }
+
+    function getLocalJobs() {
+      return [{
+        title: "Capitán de Yate de Lujo",
+        company: "Yachts Mallorca",
+        type: "yacht",
+        zone: "mediterranean",
+        salary: "8000",
+        description: "Se busca capitán experimentado para yate de 50m. STCW II/2, ISM, experiencia en Charter.",
+        publishedAt: new Date().toISOString()
+      }];
+    }
+
+    loadJobs();
+  </script>
+  <script>
+    function toggleMobileMenu() {
+      const btn = document.querySelector('.mobile-menu-btn');
+      const nav = document.getElementById('mobileNav');
+      btn.classList.toggle('active');
+      nav.classList.toggle('active');
+    }
+  </script>
+</body>
+</html>

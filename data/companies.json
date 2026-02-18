@@ -1,0 +1,10 @@
+[
+  {
+    "id": 1,
+    "name": "Marina Tours S.L.",
+    "email": "jobs@marinatours.es",
+    "password": "$2a$08$QlYYwCEU1mAhRwhFKR2Huu3qUqnfRH/qjLXfVQnCrGMHGhNPYnhMC",
+    "description": "Especialistas en turismo náutico y formación en vela",
+    "createdAt": "2026-01-01T00:00:00Z"
+  }
+]

@@ -1,0 +1,529 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para Empresas - Náutica Jobs</title>
+  <link rel="stylesheet" href="/maritime.css">
+  <style>
+    body {
+      background: linear-gradient(180deg, #E8F4F8 0%, #F5FAFC 50%, #FFFFFF 100%);
+    }
+
+    /* ===== HERO ===== */
+    .hero-company-enhanced {
+      position: relative;
+      min-height: 400px;
+      display: flex;
+      align-items: center;
+      padding: 140px 24px 80px;
+      background: 
+        linear-gradient(135deg, rgba(0, 31, 63, 0.65) 0%, rgba(46, 134, 171, 0.4) 100%),
+        url('/company-bg.png') center center / cover no-repeat;
+      background-attachment: fixed;
+      overflow: hidden;
+    }
+    .hero-company-enhanced::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      height: 80px;
+      background: linear-gradient(180deg, transparent 0%, #E8F4F8 100%);
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 1280px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 8px 18px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.95);
+      margin-bottom: 20px;
+      letter-spacing: 0.03em;
+    }
+    .hero-inner h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 16px;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+    }
+    .hero-inner p {
+      font-size: 17px;
+      color: rgba(255, 255, 255, 0.88);
+      line-height: 1.7;
+      max-width: 560px;
+    }
+
+    /* ===== MAIN SECTION ===== */
+    .company-section {
+      max-width: 1200px;
+      margin: -30px auto 0;
+      padding: 0 24px 80px;
+      position: relative;
+      z-index: 5;
+    }
+
+    /* ===== BENEFITS ===== */
+    .benefits-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .benefits-header h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 28px;
+      font-weight: 800;
+      color: #001F3F;
+      margin-bottom: 10px;
+    }
+    .benefits-header h2::after { display: none; }
+    .benefits-header p {
+      color: #6B8CAE;
+      font-size: 15px;
+    }
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 80px;
+    }
+    .benefit-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 32px 24px;
+      box-shadow: 0 2px 12px rgba(0, 31, 63, 0.06);
+      border: 1px solid rgba(135, 206, 235, 0.15);
+      transition: all 0.3s ease;
+    }
+    .benefit-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0, 31, 63, 0.1);
+    }
+    .benefit-icon {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, #E0F2FE 0%, #BAE6FD 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      margin-bottom: 18px;
+    }
+    .benefit-card h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: #001F3F;
+      margin-bottom: 8px;
+    }
+    .benefit-card p {
+      color: #6B8CAE;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* ===== PRICING ===== */
+    .pricing-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .pricing-header h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 28px;
+      font-weight: 800;
+      color: #001F3F;
+      margin-bottom: 10px;
+    }
+    .pricing-header h2::after { display: none; }
+    .pricing-header p {
+      color: #6B8CAE;
+      font-size: 15px;
+    }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1000px;
+      margin: 0 auto 80px;
+    }
+    .pricing-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 36px 28px;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(0, 31, 63, 0.06);
+      border: 2px solid rgba(135, 206, 235, 0.15);
+      transition: all 0.35s ease;
+      position: relative;
+    }
+    .pricing-card.featured {
+      border-color: #2E86AB;
+      box-shadow: 0 8px 32px rgba(46, 134, 171, 0.15);
+      transform: scale(1.03);
+    }
+    .pricing-card.featured::before {
+      content: 'Más popular';
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #001F3F 0%, #0A3A5C 100%);
+      color: #fff;
+      padding: 4px 16px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .pricing-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 36px rgba(0, 31, 63, 0.12);
+    }
+    .pricing-card.featured:hover {
+      transform: scale(1.03) translateY(-6px);
+    }
+    .pricing-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: #001F3F;
+      margin-bottom: 16px;
+    }
+    .pricing-price {
+      font-family: 'Outfit', sans-serif;
+      font-size: 44px;
+      font-weight: 800;
+      color: #0369A1;
+      margin-bottom: 4px;
+      line-height: 1;
+    }
+    .pricing-price span {
+      font-size: 16px;
+      color: #9BB5CC;
+      font-weight: 500;
+    }
+    .pricing-period {
+      color: #9BB5CC;
+      font-size: 13px;
+      margin-bottom: 24px;
+    }
+    .pricing-features {
+      list-style: none;
+      margin-bottom: 28px;
+      text-align: left;
+    }
+    .pricing-features li {
+      padding: 10px 0;
+      border-bottom: 1px solid #F0F6FA;
+      color: #5A7A96;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .pricing-features li:last-child {
+      border-bottom: none;
+    }
+    .pricing-features li .check {
+      color: #059669;
+      font-weight: 700;
+    }
+    .pricing-features li .cross {
+      color: #D1D5DB;
+    }
+    .btn-pricing {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 700;
+      font-family: 'DM Sans', sans-serif;
+      text-decoration: none;
+      text-align: center;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-pricing-primary {
+      background: linear-gradient(135deg, #001F3F 0%, #0A3A5C 100%);
+      color: #fff;
+    }
+    .btn-pricing-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 31, 63, 0.25);
+    }
+    .btn-pricing-secondary {
+      background: #F0F8FF;
+      color: #001F3F;
+      border: 2px solid #E0EEF6;
+    }
+    .btn-pricing-secondary:hover {
+      background: #E0F2FE;
+      transform: translateY(-2px);
+    }
+
+    /* ===== CTA BOX ===== */
+    .cta-box {
+      background: linear-gradient(135deg, #001F3F 0%, #0A3A5C 100%);
+      border-radius: 20px;
+      padding: 56px 40px;
+      text-align: center;
+    }
+    .cta-box h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 28px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+    .cta-box p {
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 16px;
+      max-width: 480px;
+      margin: 0 auto 28px;
+      line-height: 1.7;
+    }
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-cta-white {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 32px;
+      background: #fff;
+      color: #001F3F;
+      text-decoration: none;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 700;
+      transition: all 0.3s ease;
+    }
+    .btn-cta-white:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    }
+    .btn-cta-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 32px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 700;
+      transition: all 0.3s ease;
+    }
+    .btn-cta-outline:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .benefits-grid { grid-template-columns: 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .pricing-card.featured { transform: none; }
+      .pricing-card.featured:hover { transform: translateY(-6px); }
+    }
+    @media (max-width: 600px) {
+      .hero-company-enhanced { min-height: 340px; padding: 120px 20px 60px; }
+      .cta-box { padding: 40px 24px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-content">
+      <a href="/" class="navbar-brand">
+        <img class="navbar-logo" src="/logo.png" alt="Nautica Jobs">
+        Náutica Jobs
+      </a>
+      <ul class="navbar-links">
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/offers.html">Ofertas</a></li>
+        <li><a href="/talent.html">Talentos</a></li>
+        <li><a href="/company.html">Empresas</a></li>
+        <li><a href="/admin.html">Admin</a></li>
+      </ul>
+      <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="mobile-nav" id="mobileNav">
+        <a href="/">Inicio</a>
+        <a href="/offers.html">Ofertas</a>
+        <a href="/talent.html">Talentos</a>
+        <a href="/company.html">Empresas</a>
+        <a href="/admin.html">Admin</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero-company-enhanced">
+    <div class="hero-inner">
+      <div class="hero-badge">🏢 Soluciones para empresas</div>
+      <h1>Encuentra el talento<br>que tu flota necesita</h1>
+      <p>Publica ofertas, accede a profesionales verificados y gestiona tus procesos de selección marítima desde una sola plataforma.</p>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <section class="company-section">
+    <!-- Benefits -->
+    <div class="benefits-header">
+      <h2>¿Por qué contratar con nosotros?</h2>
+      <p>Herramientas profesionales para la selección de personal marítimo</p>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="benefit-icon">🎯</div>
+        <h3>Candidatos Verificados</h3>
+        <p>Todos nuestros candidatos pasan por un riguroso proceso de verificación de credenciales, licencias y experiencia.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">⚡</div>
+        <h3>Proceso Rápido</h3>
+        <p>Sistema optimizado que reduce significativamente el tiempo de contratación. Candidato ideal en días, no semanas.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">📊</div>
+        <h3>Gestión Integral</h3>
+        <p>Panel de control completo para gestionar ofertas, revisar candidatos y automatizar procesos de selección.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">💰</div>
+        <h3>Precios Competitivos</h3>
+        <p>Planes adaptados a tus necesidades. Desde ofertas individuales hasta paquetes empresariales con descuentos.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">🛡️</div>
+        <h3>Garantía de Calidad</h3>
+        <p>Sustitución gratuita si un candidato no cumple las expectativas. Nuestro compromiso es tu satisfacción.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">🌍</div>
+        <h3>Alcance Global</h3>
+        <p>Accede a profesionales de todo el mundo. Base de datos con candidatos de más de 50 países.</p>
+      </div>
+    </div>
+
+    <!-- Pricing -->
+    <div class="pricing-header">
+      <h2>Planes para Empresas</h2>
+      <p>Elige el plan que mejor se adapte a tu empresa</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <h3 class="pricing-title">Básico</h3>
+        <div class="pricing-price">99€<span>/mes</span></div>
+        <p class="pricing-period">Por empresa</p>
+        <ul class="pricing-features">
+          <li><span class="check">✓</span> Hasta 3 ofertas activas</li>
+          <li><span class="check">✓</span> Acceso a candidatos</li>
+          <li><span class="check">✓</span> Panel de control básico</li>
+          <li><span class="check">✓</span> Soporte por email</li>
+          <li><span class="cross">✗</span> Sin verificación prioritaria</li>
+        </ul>
+        <a href="/admin.html" class="btn-pricing btn-pricing-secondary">Empezar</a>
+      </div>
+      <div class="pricing-card featured">
+        <h3 class="pricing-title">Profesional</h3>
+        <div class="pricing-price">249€<span>/mes</span></div>
+        <p class="pricing-period">Por empresa</p>
+        <ul class="pricing-features">
+          <li><span class="check">✓</span> Ofertas ilimitadas</li>
+          <li><span class="check">✓</span> Acceso prioritario a candidatos</li>
+          <li><span class="check">✓</span> Panel de control completo</li>
+          <li><span class="check">✓</span> Soporte prioritario</li>
+          <li><span class="check">✓</span> Verificación de candidatos</li>
+          <li><span class="check">✓</span> Publicación destacada</li>
+        </ul>
+        <a href="/admin.html" class="btn-pricing btn-pricing-primary">Empezar</a>
+      </div>
+      <div class="pricing-card">
+        <h3 class="pricing-title">Empresarial</h3>
+        <div class="pricing-price">499€<span>/mes</span></div>
+        <p class="pricing-period">Para grandes flotas</p>
+        <ul class="pricing-features">
+          <li><span class="check">✓</span> Todo en Profesional</li>
+          <li><span class="check">✓</span> Cuenta dedicada</li>
+          <li><span class="check">✓</span> Búsqueda directa</li>
+          <li><span class="check">✓</span> Análisis y reportes</li>
+          <li><span class="check">✓</span> Integración con tu ATS</li>
+          <li><span class="check">✓</span> SLA garantizado</li>
+        </ul>
+        <a href="/admin.html" class="btn-pricing btn-pricing-secondary">Contactar</a>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-box">
+      <h3>¿Necesitas ayuda para elegir?</h3>
+      <p>Nuestro equipo de ventas está disponible para ayudarte a encontrar la mejor solución para tu empresa.</p>
+      <div class="cta-buttons">
+        <a href="mailto:info@nauticajobs.com" class="btn-cta-white">Hablar con Ventas</a>
+        <a href="/admin.html" class="btn-cta-outline">Ver Demo</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Náutica Jobs</h4>
+        <p>Plataforma líder de empleo marítimo conectando profesionales náuticos con oportunidades de excelencia.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Enlaces Rápidos</h4>
+        <a href="/offers.html">Ofertas</a>
+        <a href="/talent.html">Talentos</a>
+        <a href="/company.html">Empresas</a>
+      </div>
+      <div class="footer-section">
+        <h4>Contacto</h4>
+        <p>info@nauticajobs.com</p>
+        <p>+34 900 123 456</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 Náutica Jobs. Todos los derechos reservados.
+    </div>
+  </footer>
+  <script>
+    function toggleMobileMenu() {
+      const btn = document.querySelector('.mobile-menu-btn');
+      const nav = document.getElementById('mobileNav');
+      btn.classList.toggle('active');
+      nav.classList.toggle('active');
+    }
+  </script>
+</body>
+</html>

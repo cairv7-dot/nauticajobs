@@ -1,0 +1,608 @@
+﻿<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Detalle oferta - Náutica Jobs</title>
+  <link rel="stylesheet" href="/maritime.css">
+  <style>
+    body {
+      background: linear-gradient(180deg, #E8F4F8 0%, #F5FAFC 50%, #FFFFFF 100%);
+    }
+
+    /* ===== HERO SECTION ===== */
+    .hero-job-detail {
+      position: relative;
+      min-height: 320px;
+      display: flex;
+      align-items: flex-end;
+      padding: 140px 24px 60px;
+      background: 
+        linear-gradient(135deg, rgba(0, 31, 63, 0.75) 0%, rgba(46, 134, 171, 0.45) 100%),
+        url('/offers-bg.png') center center / cover no-repeat;
+      background-attachment: fixed;
+      overflow: hidden;
+    }
+    .hero-job-detail::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      height: 80px;
+      background: linear-gradient(180deg, transparent 0%, #E8F4F8 100%);
+    }
+    .hero-job-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 24px;
+      font-size: 13px;
+    }
+    .breadcrumb a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .breadcrumb a:hover {
+      color: #fff;
+    }
+    .breadcrumb .sep {
+      color: rgba(255, 255, 255, 0.5);
+    }
+    .breadcrumb .current {
+      color: #fff;
+      font-weight: 600;
+    }
+
+    /* Job Title Area */
+    .job-title-section {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .job-title-left {
+      flex: 1;
+      min-width: 280px;
+    }
+    .time-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 6px 14px;
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 16px;
+    }
+    .job-title-left h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+    .job-meta-tags {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .meta-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.9);
+    }
+    .meta-tag.salary-tag {
+      background: rgba(74, 222, 128, 0.2);
+      border-color: rgba(74, 222, 128, 0.3);
+      color: #86EFAC;
+    }
+
+    /* ===== CONTENT SECTION ===== */
+    .job-content-section {
+      max-width: 900px;
+      margin: -30px auto 80px;
+      padding: 0 24px;
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Main Card */
+    .job-detail-card {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0, 31, 63, 0.1);
+      border: 1px solid rgba(135, 206, 235, 0.15);
+      overflow: hidden;
+    }
+
+    .job-detail-body {
+      padding: 40px;
+    }
+
+    /* Contact Section */
+    .contact-section {
+      background: linear-gradient(135deg, #F0F8FF 0%, #E8F4F8 100%);
+      border: 1px solid rgba(135, 206, 235, 0.2);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 36px;
+    }
+    .contact-section h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: #001F3F;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .contact-section h3 svg {
+      color: #2E86AB;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 18px;
+      background: #fff;
+      border-radius: 12px;
+      border: 1px solid rgba(135, 206, 235, 0.15);
+      transition: all 0.2s ease;
+    }
+    .contact-item:hover {
+      border-color: rgba(46, 134, 171, 0.3);
+      box-shadow: 0 2px 8px rgba(0, 31, 63, 0.06);
+    }
+    .contact-item .contact-icon {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, #E0F2FE 0%, #BAE6FD 100%);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    .contact-item .contact-info {
+      min-width: 0;
+    }
+    .contact-item .contact-label {
+      font-size: 11px;
+      color: #9BB5CC;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 2px;
+    }
+    .contact-item .contact-value {
+      font-size: 14px;
+      color: #001F3F;
+      font-weight: 600;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .contact-item .contact-value a {
+      color: #2E86AB;
+      text-decoration: none;
+    }
+    .contact-item .contact-value a:hover {
+      color: #001F3F;
+    }
+
+    /* Description Section */
+    .description-section {
+      margin-bottom: 36px;
+    }
+    .description-section h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: #001F3F;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .description-section h2 svg {
+      color: #2E86AB;
+    }
+    .description-section h2::after { display: none; }
+    .description-box {
+      background: linear-gradient(135deg, #FAFCFE 0%, #F5FAFC 100%);
+      border: 1px solid rgba(135, 206, 235, 0.15);
+      border-radius: 16px;
+      padding: 32px;
+    }
+    .description-box p {
+      color: #3A5A7C;
+      font-size: 15px;
+      line-height: 1.95;
+      white-space: pre-wrap;
+    }
+
+    /* Action Buttons */
+    .action-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      padding-top: 20px;
+      border-top: 1px solid rgba(135, 206, 235, 0.15);
+    }
+    .btn-apply {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 40px;
+      background: linear-gradient(135deg, #001F3F 0%, #0A3A5C 100%);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 14px;
+      font-size: 15px;
+      font-weight: 700;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 14px rgba(0, 31, 63, 0.2);
+    }
+    .btn-apply:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0, 31, 63, 0.3);
+    }
+    .btn-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 40px;
+      background: #fff;
+      color: #001F3F;
+      text-decoration: none;
+      border-radius: 14px;
+      font-size: 15px;
+      font-weight: 600;
+      border: 1px solid rgba(135, 206, 235, 0.25);
+      transition: all 0.3s ease;
+    }
+    .btn-back:hover {
+      background: #F0F8FF;
+      border-color: rgba(46, 134, 171, 0.3);
+      transform: translateY(-3px);
+    }
+
+    /* Empty/Loading States */
+    .job-detail-card.loading {
+      text-align: center;
+      padding: 80px 40px;
+      color: #6B8CAE;
+    }
+    .job-detail-card.error {
+      text-align: center;
+      padding: 80px 40px;
+      color: #E53E3E;
+    }
+
+    @media (max-width: 768px) {
+      .hero-job-detail { 
+        min-height: 280px; 
+        padding: 120px 20px 50px; 
+      }
+      .job-title-section {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .job-content-section {
+        margin-top: -20px;
+      }
+      .job-detail-body {
+        padding: 28px;
+      }
+      .contact-section {
+        padding: 22px;
+      }
+      .description-box {
+        padding: 24px;
+      }
+      .action-buttons {
+        flex-direction: column;
+      }
+      .btn-apply, .btn-back {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-content">
+      <a href="/" class="navbar-brand">
+        <img class="navbar-logo" src="/logo.png" alt="Nautica Jobs">
+        Náutica Jobs
+      </a>
+      <ul class="navbar-links">
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/offers.html">Ofertas</a></li>
+        <li><a href="/talent.html">Talentos</a></li>
+        <li><a href="/company.html">Empresas</a></li>
+      </ul>
+      <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="mobile-nav" id="mobileNav">
+        <a href="/">Inicio</a>
+        <a href="/offers.html">Ofertas</a>
+        <a href="/talent.html">Talentos</a>
+        <a href="/company.html">Empresas</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero-job-detail">
+    <div class="hero-job-inner">
+      <div class="breadcrumb">
+        <a href="/">Inicio</a>
+        <span class="sep">›</span>
+        <a href="/offers.html">Ofertas</a>
+        <span class="sep">›</span>
+        <span class="current" id="breadcrumbTitle">Detalle</span>
+      </div>
+      <div id="job-detail">
+        <div class="job-title-section">
+          <div class="job-title-left">
+            <div class="time-badge">⏳ Cargando...</div>
+            <h1>Cargando oferta...</h1>
+            <div class="job-meta-tags"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="job-content-section">
+    <div id="job-body"></div>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Náutica Jobs</h4>
+        <p>Plataforma líder de empleo marítimo conectando profesionales náuticos con oportunidades de excelencia en el sector global.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Para Candidatos</h4>
+        <a href="/offers.html">Ver Ofertas</a>
+        <a href="/talent.html">Buscar Empleos</a>
+        <a href="/apply.html">Postularse</a>
+      </div>
+      <div class="footer-section">
+        <h4>Para Empresas</h4>
+        <a href="/company.html">Panel de Empresa</a>
+        <a href="/admin.html">Gestión</a>
+      </div>
+      <div class="footer-section">
+        <h4>Contacto</h4>
+        <p>info@nauticajobs.com</p>
+        <p>+34 900 123 456</p>
+        <p>Valencia, España</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 Náutica Jobs. Todos los derechos reservados.
+    </div>
+  </footer>
+
+  <script>
+    function formatTimeAgo(publishedAt) {
+      if (!publishedAt) return '';
+      const published = new Date(publishedAt);
+      const now = new Date();
+      const diffTime = Math.abs(now - published);
+      const diffHours = Math.floor(diffTime / (1000 * 60 * 60));
+      const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+      
+      if (diffHours < 1) return 'Publicado hace menos de 1 hora';
+      if (diffHours < 24) return `Publicado hace ${diffHours} hora${diffHours !== 1 ? 's' : ''}`;
+      if (diffDays === 0) return 'Publicado hoy';
+      if (diffDays === 1) return 'Publicado ayer';
+      if (diffDays < 7) return `Publicado hace ${diffDays} días`;
+      if (diffDays < 30) return `Publicado hace ${Math.floor(diffDays/7)} semanas`;
+      return `Publicado hace ${Math.floor(diffDays/30)} meses`;
+    }
+
+    function getSalaryDisplay(salary) {
+      if (!salary) return 'No especificado';
+      
+      // Check for salary range (e.g., "2500-3500 €/mes")
+      const rangeMatch = salary.match(/(\d{3,5})\s*[-–]\s*(\d{3,5})/);
+      if (rangeMatch) {
+        return rangeMatch[1] + '-' + rangeMatch[2] + '€';
+      }
+      
+      // Check for single number salary
+      const match = salary.match(/(\d{3,5})/);
+      if (match && match[1]) {
+        const num = parseInt(match[1]);
+        if (num >= 100 && num <= 20000) return match[1] + '€';
+      }
+      
+      // Check for negotiation keywords
+      if (salary.toLowerCase().match(/negociable|a negociar|consultar|experiencia|competitivo|acordar/)) {
+        return 'Negociable';
+      }
+      
+      // Check for "Sin especificar" or similar
+      if (salary.toLowerCase().match(/sin especificar|tbd|pendiente/)) {
+        return 'No especificado';
+      }
+      
+      // If there's any other salary info, show it
+      if (salary && salary.length > 0 && salary.length < 50) {
+        return salary;
+      }
+      
+      return 'No especificado';
+    }
+
+    function getTypeLabel(type) {
+      const t = (type || 'full-time').toLowerCase();
+      if (t === 'seasonal' || t === 'temporal') return 'Temporal';
+      if (t === 'part-time' || t === 'parcial') return 'Parcial';
+      return 'Jornada Completa';
+    }
+
+    async function load() {
+      const params = new URLSearchParams(location.search);
+      const id = params.get('id');
+      const titleEl = document.getElementById('job-detail');
+      const bodyEl = document.getElementById('job-body');
+      
+      if (!id) {
+        titleEl.innerHTML = `
+          <div class="job-title-section">
+            <div class="job-title-left">
+              <h1>ID de oferta no proporcionado</h1>
+            </div>
+          </div>`;
+        return;
+      }
+      
+      try {
+        const res = await fetch('/api/offers/' + encodeURIComponent(id));
+        if (!res.ok) throw new Error('Oferta no encontrada');
+        const o = await res.json();
+        
+        const daysAgo = formatTimeAgo(o.publishedAt || o.sourceDate);
+        const salaryDisplay = getSalaryDisplay(o.salary);
+        const location = o.location || 'Sin ubicación';
+        const type = getTypeLabel(o.type);
+
+        document.getElementById('breadcrumbTitle').textContent = o.title || 'Oferta';
+        document.title = (o.title || 'Oferta') + ' - Náutica Jobs';
+
+        // Header section
+        titleEl.innerHTML = `
+          <div class="job-title-section">
+            <div class="job-title-left">
+              ${daysAgo ? `<div class="time-badge">🕐 ${daysAgo}</div>` : ''}
+              <h1>${o.title || 'Oferta de Empleo'}</h1>
+              <div class="job-meta-tags">
+                <span class="meta-tag">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  ${location}
+                </span>
+                <span class="meta-tag">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  ${type}
+                </span>
+                <span class="meta-tag salary-tag">💰 ${salaryDisplay}</span>
+              </div>
+            </div>
+          </div>`;
+
+        // Contact section
+        let contactHTML = '';
+        if (o.contactEmail || o.contactPhone || o.companyName) {
+          let items = '';
+          if (o.companyName) {
+            items += `<div class="contact-item"><div class="contact-icon">🏢</div><div class="contact-info"><div class="contact-label">Empresa</div><div class="contact-value">${o.companyName}</div></div></div>`;
+          }
+          if (o.contactEmail) {
+            items += `<div class="contact-item"><div class="contact-icon">📧</div><div class="contact-info"><div class="contact-label">Email</div><div class="contact-value"><a href="mailto:${o.contactEmail}">${o.contactEmail}</a></div></div></div>`;
+          }
+          if (o.contactPhone) {
+            items += `<div class="contact-item"><div class="contact-icon">📞</div><div class="contact-info"><div class="contact-label">Teléfono</div><div class="contact-value"><a href="tel:${o.contactPhone}">${o.contactPhone}</a></div></div></div>`;
+          }
+          contactHTML = `
+            <div class="contact-section">
+              <h3>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                Información de Contacto
+              </h3>
+              <div class="contact-grid">${items}</div>
+            </div>`;
+        }
+
+        // Body content
+        bodyEl.innerHTML = `
+          <div class="job-detail-card">
+            <div class="job-detail-body">
+              ${contactHTML}
+              <div class="description-section">
+                <h2>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                  Descripción del Puesto
+                </h2>
+                <div class="description-box">
+                  <p>${o.description || 'Sin descripción disponible'}</p>
+                </div>
+              </div>
+              <div class="action-buttons">
+                <a href="/apply.html?id=${o.id}" class="btn-apply">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+                  Postular Ahora
+                </a>
+                <a href="/offers.html" class="btn-back">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+                  Volver a Ofertas
+                </a>
+              </div>
+            </div>
+          </div>`;
+      } catch(e) {
+        titleEl.innerHTML = `
+          <div class="job-title-section">
+            <div class="job-title-left">
+              <h1>Error cargando oferta</h1>
+            </div>
+          </div>`;
+        bodyEl.innerHTML = `
+          <div class="job-detail-card error">
+            <p>No se pudo cargar la oferta. Por favor, inténtalo de nuevo más tarde.</p>
+            <a href="/offers.html" class="btn-back" style="margin-top: 20px; display: inline-flex;">Volver a Ofertas</a>
+          </div>`;
+      }
+    }
+    load();
+  </script>
+  <script>
+    function toggleMobileMenu() {
+      const btn = document.querySelector('.mobile-menu-btn');
+      const nav = document.getElementById('mobileNav');
+      btn.classList.toggle('active');
+      nav.classList.toggle('active');
+    }
+  </script>
+</body>
+</html>

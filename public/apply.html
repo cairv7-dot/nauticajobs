@@ -1,0 +1,116 @@
+﻿<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Postular a oferta - Náutica Jobs</title>
+  <link rel="stylesheet" href="/maritime.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-content">
+      <a href="/" class="navbar-brand">
+        <img class="navbar-logo" src="/logo.png" alt="Nautica Jobs">
+        Náutica Jobs
+      </a>
+      <ul class="navbar-links">
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/offers.html">Ofertas</a></li>        <li><a href=\"/talent.html\">Candidatos</a></li>      </ul>
+    </div>
+  </nav>
+
+  <section>
+    <div style="max-width: 600px; margin: 0 auto; background: white; padding: 40px; border-radius: 12px; box-shadow: var(--shadow-md);">
+      <h1 style="font-size: 28px; font-weight: 800; color: var(--primary-dark); margin-bottom: 8px;">Postular a Oferta</h1>
+      <h2 id="job-title" style="font-size: 18px; color: var(--gray-medium); margin-bottom: 32px;">Cargando...</h2>
+      
+      <form id="apply-form" enctype="multipart/form-data">
+        <input type="hidden" name="jobId" id="jobId">
+        
+        <div class="filter-group">
+          <label>👤 Nombre Completo</label>
+          <input name="name" required placeholder="Ej: Juan García López">
+        </div>
+        
+        <div class="filter-group">
+          <label>📧 Email</label>
+          <input name="email" type="email" required placeholder="tu@email.com">
+        </div>
+        
+        <div class="filter-group">
+          <label>💬 Mensaje (Opcional)</label>
+          <textarea name="message" placeholder="Cuéntanos por qué eres el candidato ideal..." style="min-height: 100px; padding: 10px;"></textarea>
+        </div>
+        
+        <div class="filter-group">
+          <label>📄 Adjuntar CV (PDF, DOC, DOCX)</label>
+          <input name="cv" type="file" accept=".pdf,.doc,.docx" style="padding: 8px; border: 2px dashed var(--primary-blue); border-radius: 6px; cursor: pointer;">
+          <p style="font-size: 12px; color: var(--gray-medium); margin-top: 6px;">Tamaño máximo: 5MB</p>
+        </div>
+        
+        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 14px; font-size: 16px; cursor: pointer;">🚀 Enviar Candidatura</button>
+        <div id="apply-result" style="margin-top: 16px; padding: 12px; border-radius: 8px; text-align: center; font-weight: 600; display: none;"></div>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Sobre Nosotros</h4>
+        <p>Plataforma de empleo especializada en el sector marítimo y portuario.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Para Candidatos</h4>
+        <a href="/offers.html">Ver Ofertas</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 Náutica Jobs
+    </div>
+  </footer>
+  <script>
+    document.addEventListener('DOMContentLoaded', async ()=>{
+      const params = new URLSearchParams(location.search);
+      const id = params.get('id');
+      if (id) document.getElementById('jobId').value = id;
+      
+      if (id){
+        const res = await fetch('/api/offers/' + encodeURIComponent(id));
+        if (res.ok){ 
+          const o = await res.json(); 
+          document.getElementById('job-title').textContent = 'Postular: ' + o.title 
+        }
+      }
+      
+      const form = document.getElementById('apply-form');
+      const result = document.getElementById('apply-result');
+      
+      form.addEventListener('submit', async (ev)=>{
+        ev.preventDefault(); 
+        result.style.display = 'block';
+        result.textContent = '⏳ Enviando candidatura...';
+        const fd = new FormData(form);
+        try{
+          const r = await fetch('/api/apply', { method: 'POST', body: fd });
+          const j = await r.json();
+          if (j.ok) { 
+            result.style.backgroundColor = '#d4edda';
+            result.style.color = '#155724';
+            result.textContent = '✅ ¡Candidatura enviada correctamente! Gracias por tu interés.'; 
+            form.reset(); 
+          } else {
+            result.style.backgroundColor = '#f8d7da';
+            result.style.color = '#721c24';
+            result.textContent = '❌ ' + (j.error || 'Error al enviar');
+          }
+        }catch(e){ 
+          result.style.backgroundColor = '#f8d7da';
+          result.style.color = '#721c24';
+          result.textContent = '❌ Error de conexión';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
